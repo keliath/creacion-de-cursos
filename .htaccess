@@ -1,0 +1,17 @@
+#redirección permanente de dominio www a sin www
+
+RewriteEngine on
+
+Options +FollowSymLinks
+
+RewriteCond %{HTTP_HOST} ^www\.midominio\.com$ [NC]
+
+RewriteRule ^(.*)$ http://midominio.com/$1 [R=301,L]
+
+LimitRequestBody 0
+
+php_value upload_max_filesize 250M
+php_value post_max_size 251M
+php_value max_input_time 600
+php_value max_execution_time 600
+

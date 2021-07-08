@@ -1,0 +1,425 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.body {
+    background: #F4F6F6;
+    height: 100%;
+    width: 100%;
+}
+
+.alert {
+    display: none;
+}
+
+
+/*=============================================
+DISEÑO HERO - CINEMAGRAPH
+=============================================*/
+
+.back-hero {
+    /* background: url(../images/banner.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover!important;
+    height: 100%;
+    width: 100%; */
+}
+
+.back-hero-content {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.back-hero-content .carousel-item {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+.back-hero-content img {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+
+/*==================================================*/
+
+.iconos-publicidad {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 4rem;
+}
+
+.thumb img {
+    filter: gray;
+    /* IE6-9 */
+    -webkit-filter: grayscale(0.5);
+    /* Google Chrome, Safari 6+ & Opera 15+ */
+    -webkit-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 2px 6px 2px rgba(0, 0, 0, 0.75);
+    margin-bottom: 20px;
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+}
+
+.thumb a.thumbnail::before {
+    position: absolute;
+    content: "\f144";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 5em;
+    color: white;
+    text-align: center;
+    width: 46px;
+    line-height: 46px;
+    background: rgba(0, 0, 0, 0.7);
+    top: 50%;
+    margin-top: -23px;
+    left: 45%;
+    margin-left: -23px;
+    border-radius: 100%;
+    z-index: 1;
+}
+
+img:hover {
+    filter: none;
+    /* IE6-9 */
+    -webkit-filter: grayscale(0);
+    /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+.imgi {
+    height: 50px;
+    box-shadow: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    height: 60px;
+}
+
+.thumb {
+    font-size: 0.8rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+/* change the background color */
+
+.custom-color {
+    background-color: rgba(51, 153, 255, 1);
+}
+
+.navbar-custom {
+    background-color: rgba(51, 153, 255, 1);
+}
+
+
+/* change the brand and text color */
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: rgba(255, 255, 255, 1);
+}
+
+
+/* change the link color */
+
+.navbar-custom .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 1);
+}
+
+
+/* change the color of active or hovered links */
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+main {
+    margin: 10px 0px;
+}
+
+footer {
+    height: 40px;
+    width: 100%;
+    background-color: rgba(0, 75, 160, 1);
+    color: aliceblue;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    font-size: 15px;
+    z-index: 100;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+button,
+input[type=submit] {
+    border-radius: 5px;
+}
+
+
+/* inicio modal login form */
+
+.login input[type=text],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.ok,
+.cancelbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover,
+input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: 100%;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.login .container {
+    border-radius: 10px;
+}
+
+.login .modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+
+/* Modal Content/Box */
+
+.login .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    border-radius: 10px;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.16);
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+.login label:last-child {
+    float: right;
+}
+
+
+/* The Close Button (x) */
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+
+/* Add Zoom Animation */
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.tabla {
+    width: 100%;
+    border-radius: 5px;
+    text-align: justify;
+}
+
+.tabla tr,
+th,
+td {
+    padding: 10px 16px;
+}
+
+.tabla th {
+    background-color: rgba(0, 92, 230, 1);
+    text-align: center;
+    color: aliceblue;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+
+/* fin modal form */
+
+
+/* Inicio SideMenu */
+
+.main {
+    margin-left: 250px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 1);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.8;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3;
+}
+
+.sidenav a.icon {
+    display: none;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+
+/*Fin del SideMenu*/
+
+.campos-opcional {
+    display: none;
+}
+
+.campos-opcional-2 {
+    display: none;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.tab-pane {
+    padding: 20px;
+}
+
+.dropdown-item-nohover {
+    cursor: default;
+}
+
+.dropdown-item-nohover:hover {
+    background-color: transparent!important;
+}
+
+
+/* span de numero de matriculas */
+
+.n-matriculas {}
+
+@media (min-width: 1200px) {
+    .back-hero {
+        height: 60vh;
+    }
+    .back-hero .container {}
+}
+
+@media (max-width:800px) {
+    .sidenav {
+        width: 70px;
+    }
+    .sidenavresponsive {
+        width: 250px;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .sidenav a {
+        display: none;
+    }
+    .sidenavresponsive a {
+        display: block;
+    }
+    .sidenav a.icon {
+        display: block;
+        padding: 8px 8px 8px 22px;
+    }
+    .main {
+        margin-left: 70px;
+    }
+    .mainresponsive {
+        margin-left: 0px;
+    }
+    .form {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 600px) {}
+
+@media screen and (max-width: 600px) {}
