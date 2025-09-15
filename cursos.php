@@ -1,8 +1,3 @@
-<script>
-    function abrir() {
-        loginModal.style.display = 'block';
-    }
-</script>
 <?php
 if (!isset($_SESSION)) {
     session_start();
@@ -84,6 +79,11 @@ if (isset($_POST["matricular"])) {
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        function abrir() {
+            loginModal.style.display = 'block';
+        }
+    </script>
     <?php
     include_once("./includes/head.php");
     ?>

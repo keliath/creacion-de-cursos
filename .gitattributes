@@ -1,0 +1,17 @@
+# Normalize line endings and diffs
+* text=auto
+
+# Use LF in unix-y files used by containers
+*.sh text eol=lf
+Dockerfile text eol=lf
+docker/** text eol=lf
+*.yml text eol=lf
+Makefile text eol=lf
+*.php text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+# Keep CRLF for Windows scripts
+*.ps1 text eol=crlf
+*.bat text eol=crlf

@@ -1,0 +1,26 @@
+# VCS
+.git
+.gitignore
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Node/Composer (if ever added)
+node_modules
+vendor
+
+# Logs and caches
+*.log
+tmp
+cache
+
+# Docker artifacts
+docker/mysql/data

@@ -1,0 +1,33 @@
+# OS/Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies and builds
+node_modules/
+vendor/
+dist/
+build/
+
+# Logs and caches
+*.log
+*.sql.tmp
+tmp/
+cache/
+
+# Docker
+docker/mysql/data/
+
+# Uploaded/media (keep placeholder)
+cursos/*
+!cursos/.gitkeep
+
+# Git
+.git-credentials
+.gitconfig.local
