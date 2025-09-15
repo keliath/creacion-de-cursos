@@ -4,8 +4,11 @@
 FROM php:8.1-fpm-alpine AS base
 
 RUN set -eux; \
-    apk add --no-cache tzdata bash \
-    && docker-php-ext-install mysqli \
+    apk add --no-cache tzdata bash freetype libjpeg-turbo libpng \
+    && apk add --no-cache --virtual .build-deps freetype-dev libjpeg-turbo-dev libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd mysqli \
+    && apk del .build-deps \
     && rm -rf /var/cache/apk/*
 
 # Configure PHP

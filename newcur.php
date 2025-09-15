@@ -166,6 +166,28 @@ if(isset($_POST["crear"])){
                 }
             }
 
+            // Validación y ayuda de tamaño de archivos (máx 64 MB por archivo)
+            (function(){
+              var maxBytes = 67108864;
+              function bytesToSize(bytes){ var sizes=['Bytes','KB','MB','GB'],i=0; while(bytes>=1024&&i<sizes.length-1){bytes/=1024;i++;} return bytes.toFixed(1)+' '+sizes[i]; }
+              function validate(input){
+                if (!input.files || !input.files.length) return true;
+                for (var i=0;i<input.files.length;i++){
+                  if (input.files[i].size > maxBytes){
+                    alert('El archivo "'+ input.files[i].name +'" supera el límite de '+ bytesToSize(maxBytes));
+                    input.value='';
+                    return false;
+                  }
+                }
+                return true;
+              }
+              $(function(){
+                var $img = $('input[name="file"][type="file"]');
+                var $vid = $('input[name="fileVideo"][type="file"]');
+                if ($img.length && $img.next('.file-hint').length===0){ $img.after('<small class="form-text text-muted file-hint">Tamaño máximo 64 MB. Formatos: JPG, PNG, GIF.</small>'); $img.on('change', function(){ validate(this); }); }
+                if ($vid.length && $vid.next('.file-hint').length===0){ $vid.after('<small class="form-text text-muted file-hint">Tamaño máximo 64 MB. Formatos de vídeo comunes (mp4, webm, etc.).</small>'); $vid.on('change', function(){ validate(this); }); }
+              });
+            })();
         </script>
     </body>
 </html>

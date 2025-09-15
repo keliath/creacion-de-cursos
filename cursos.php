@@ -81,7 +81,13 @@ if (isset($_POST["matricular"])) {
     <meta charset="UTF-8">
     <script>
         function abrir() {
-            loginModal.style.display = 'block';
+            if (typeof $ !== 'undefined' && typeof $('#loginModal').modal === 'function') {
+                $('#loginModal').modal('show');
+            } else {
+                // Fallback: navigate to home where login link exists
+                var el = document.getElementById('loginModal');
+                if (el) { el.style.display = 'block'; }
+            }
         }
     </script>
     <?php

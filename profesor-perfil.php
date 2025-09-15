@@ -50,14 +50,16 @@ if (isset($_POST["idUsuarioFoto"])) {
 
         $directorio = "images/usuarios/" . $_POST["idUsuarioFoto"];
 
-        if ($fotoActual != "") {
-            unlink($fotoActual);
-        } else {
-
-            if (!file_exists($directorio)) {
-
-                mkdir($directorio, 0755);
+        // Remove previous photo if present and file exists
+        if (!empty($fotoActual)) {
+            if (file_exists($fotoActual)) {
+                @unlink($fotoActual);
             }
+        }
+
+        // Ensure target directory exists
+        if (!file_exists($directorio)) {
+            mkdir($directorio, 0755, true);
         }
 
         if ($_FILES["cambiarImagen"]["type"] == "image/jpg") {
@@ -305,5 +307,24 @@ VENTANA MODAL CAMBIO DE FOTO
 
 
 </body>
+</script>
+<script>
+  // Validación y mensaje para cambio de imagen de perfil (64 MB máx)
+  (function(){
+    var maxBytes = 67108864;
+    function bytesToSize(bytes){ var sizes=['Bytes','KB','MB','GB'],i=0; while(bytes>=1024&&i<sizes.length-1){bytes/=1024;i++;} return bytes.toFixed(1)+' '+sizes[i]; }
+    var sel = 'input[name="cambiarImagen"][type="file"]';
+    $(function(){
+      var $in = $(sel);
+      if ($in.length && $in.next('.file-hint').length===0){
+        $in.after('<small class="form-text text-muted file-hint">Tamaño máximo 64 MB. Formatos: JPG, PNG.</small>');
+      }
+      $in.on('change', function(){
+        var f = this.files && this.files[0]; if (!f) return;
+        if (f.size > maxBytes){ alert('El archivo supera el límite de '+ bytesToSize(maxBytes)); this.value=''; }
+      });
+    });
+  })();
+</script>
 
 </html>

@@ -125,3 +125,32 @@
         }
     }
 </script>
+<script>
+  // Añade validación y texto de ayuda para límites de tamaño en inputs de archivos
+  (function(){
+    var maxBytes = 67108864; // 64 MB en bytes (debe coincidir con upload_max_filesize/post_max_size)
+    function bytesToSize(bytes){ var sizes=['Bytes','KB','MB','GB'],i=0; while(bytes>=1024&&i<sizes.length-1){bytes/=1024;i++;} return bytes.toFixed(1)+' '+sizes[i]; }
+    function validateInput(input){
+      var files = input.files; if(!files||!files.length) return true;
+      for (var i=0;i<files.length;i++){
+        if (files[i].size > maxBytes){
+          alert('El archivo "'+ files[i].name +'" supera el límite de '+ bytesToSize(maxBytes));
+          input.value = '';
+          return false;
+        }
+      }
+      return true;
+    }
+    function ensureHint($input, text){
+      if ($input.next('.file-hint').length===0){ $input.after('<small class="form-text text-muted file-hint">'+ text +'</small>'); }
+    }
+    $(function(){
+      var $img = $('input[name="file"][type="file"]');
+      var $vid = $('input[name="fileVideo"][type="file"]');
+      var $docs = $('input[name="docs[]"][type="file"]');
+      if ($img.length){ ensureHint($img, 'Tamaño máximo 64 MB. Formatos: JPG, PNG, GIF.'); $img.on('change', function(){ validateInput(this); }); }
+      if ($vid.length){ ensureHint($vid, 'Tamaño máximo 64 MB. Formatos de vídeo comunes (mp4, webm, etc.).'); $vid.on('change', function(){ validateInput(this); }); }
+      if ($docs.length){ ensureHint($docs, 'Cada PDF hasta 64 MB. Puedes seleccionar múltiples archivos.'); $docs.on('change', function(){ validateInput(this); }); }
+    });
+  })();
+</script>

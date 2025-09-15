@@ -1,125 +1,112 @@
-<div id="id01" class="login modal">
-
-    <form class="login modal-content animate" action="" method="post">
-        <div class="login container">
-            <label for="mail"><b>Usuario</b></label>
-            <input type="text" placeholder="Ingrese su usuario" name="mail" required>
-
-            <label for="psw"><b>Contraseña</b></label>
-            <input type="password" placeholder="Ingrese su contraseña" name="psw" required>
-            <div class="container">
-                <div class="row">
-                    <input type="submit" name="login" class="btn btn-success col-md-6" value="Entrar">
-                    <button type="button" id="cancel" class="btn btn-danger col-md-6">Cancelar</button>
-                </div>
-            </div>
+<!-- Login Modal (Bootstrap) -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="" method="post">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="mail">Usuario</label>
+            <input type="text" class="form-control" id="mail" name="mail" placeholder="Ingrese su usuario" required>
+          </div>
+          <div class="form-group">
+            <label for="psw">Contraseña</label>
+            <input type="password" class="form-control" id="psw" name="psw" placeholder="Ingrese su contraseña" required>
+          </div>
+          <div class="d-flex justify-content-between">
+            <a href="#" id="lost">¿Olvidó su contraseña?</a>
+            <a href="#" id="nuser">¿Nuevo usuario?</a>
+          </div>
         </div>
-
-        <div class="login container" style="background-color:#f1f1f1">
-            <label for="" class="login">Olvido su <a href="#lost" id="lost">contraseña?</a></label>
-            <label for="" class = "login">Nuevo <a href="#nuser" id="nuser">usuario?</a></label>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" id="cancel">Cancelar</button>
+          <button type="submit" name="login" class="btn btn-success">Entrar</button>
         </div>
-    </form>
-</div>
+      </form>
+    </div>
+  </div>
+ </div>
 
-<div id="id02" class="login modal">
-    <form action="" method="post" class="login modal-content animate">
-        <div class="login container">
-            <label for="regmail"><b>Email</b></label>
-            <input type="text" placeholder="Correo electronico" name="regmail" required>
-
-            <label for="regname"><b>Nombre</b></label>
-            <input type="text" placeholder="Ingrese su nombre" name="regname" required>
-
-            <label for="regpsw2"><b>Contraseña</b></label>
-            <input type="password" placeholder="Ingrese su Contraseña" name="regpsw" required>
-
-            <label for="regpsw2"><b>Contraseña</b></label>
-            <input type="password" placeholder="Ingrese nuevamente su Contraseña" name="regpsw2" required>
-            <div id="display"></div>
-
-            <div class="container">
-                <div class="row">
-                    <input type="submit" name="registro" class="btn btn-success col-md-6" value="Entrar">
-                    <button type="button" id="cancelReg" class="btn btn-danger col-md-6">Cancelar</button>
-                </div>
-            </div>
+<!-- Register Modal (Bootstrap) -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Crear cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="" method="post">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="regmail">Email</label>
+            <input type="email" class="form-control" id="regmail" name="regmail" placeholder="Correo electrónico" required>
+          </div>
+          <div class="form-group">
+            <label for="regname">Nombre</label>
+            <input type="text" class="form-control" id="regname" name="regname" placeholder="Ingrese su nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="regpsw">Contraseña</label>
+            <input type="password" class="form-control" id="regpsw" name="regpsw" placeholder="Ingrese su contraseña" required>
+          </div>
+          <div class="form-group">
+            <label for="regpsw2">Confirmar contraseña</label>
+            <input type="password" class="form-control" id="regpsw2" name="regpsw2" placeholder="Repita su contraseña" required>
+          </div>
+          <div id="display" class="small text-danger"></div>
         </div>
-    </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" id="cancelReg">Cancelar</button>
+          <button type="submit" name="registro" id="registro" class="btn btn-primary">Registrarse</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 
 <script>
-    // Get the modal
-    var loginModal = document.getElementById('id01');
-    var regModal = document.getElementById('id02');
-    var lostModal = document.getElementById('id03');
-    var login = document.getElementById('login');
-    var nuser2 = document.getElementById('nuser2');
-    var lost = document.getElementById('lost');
-    var nuser = document.getElementById('nuser');
-    var cancel = document.getElementById('cancel');
-    var cancelReg = document.getElementById('cancelReg');
+  (function(){
+    var $loginLink = document.getElementById('login');
+    var $ctaCreate = document.getElementById('nuser2');
+    var $toRegister = document.getElementById('nuser');
+    var $toLost = document.getElementById('lost');
 
-    //cuando el usuario da click en la palabra 'iniciar sesion' del encabezado el modal se abre
-    login.onclick = function(){
-        loginModal.style.display='block';
+    if ($loginLink) {
+      $loginLink.addEventListener('click', function(e){ e.preventDefault(); $('#loginModal').modal('show'); });
     }
-    
-    //cuando el usuario da click en la palabra 'iniciar sesion' del encabezado el modal se abre
-    try {
-  nuser2.onclick = function(){
-        loginModal.style.display = 'none';
-        regModal.style.display = 'block';
+    if ($ctaCreate) {
+      $ctaCreate.addEventListener('click', function(e){ e.preventDefault(); $('#loginModal').modal('hide'); $('#registerModal').modal('show'); });
     }
-} catch (error) {
-  console.error(error);
-  // expected output: ReferenceError: nonExistentFunction is not defined
-  // Note - error messages will vary depending on browser
-}
-    
-
-    //cuando el usuario da click en 'registro' se cerrara el modal para abrir el del registro
-    nuser.onclick = function(){
-        loginModal.style.display = 'none';
-        regModal.style.display = 'block';
+    if ($toRegister) {
+      $toRegister.addEventListener('click', function(e){ e.preventDefault(); $('#loginModal').modal('hide'); $('#registerModal').modal('show'); });
+    }
+    if ($toLost) {
+      $toLost.addEventListener('click', function(e){ e.preventDefault(); $('#loginModal').modal('hide'); /* implementar flujo de recuperación si aplica */ });
     }
 
-    //cuando el usuario da click en 'contrasena' se cerrara el modal para abrir el del restaurar pass
-    lost.onclick = function(){
-        loginModal.style.display = 'none';
-    }
-
-    //boton cancelar del modal que lo cerrara
-    cancel.onclick = function(){
-        loginModal.style.display = 'none';  
-    }
-    cancelReg.onclick = function(){
-        regModal.style.display = 'none';
-    }
-
-    //cuando el usuario da click fuera del modal este se cierra
-    window.onclick = function(event) {
-        if (event.target == loginModal) {
-            loginModal.style.display = 'none';
+    var reg1 = document.getElementById('regpsw');
+    var reg2 = document.getElementById('regpsw2');
+    var display = document.getElementById('display');
+    if (reg1 && reg2) {
+      var btn = document.getElementById('registro');
+      var check = function(){
+        if (reg1.value && reg2.value && reg1.value !== reg2.value) {
+          display.textContent = 'Las contraseñas deben ser iguales';
+          if (btn) btn.setAttribute('disabled','disabled');
+        } else {
+          display.textContent = '';
+          if (btn) btn.removeAttribute('disabled');
         }
-        if (event.target == regModal){
-            regModal.style.display = 'none';
-        }
+      };
+      reg1.addEventListener('input', check);
+      reg2.addEventListener('input', check);
     }
-
-    function iguales(obj){
-        var val = obj.value;
-        var val2 = document.getElementById('regpsw').value;
-        var btn = document.getElementById('registro');
-        var dis = document.getElementById('displaylog');
-        if(val != val2){
-            dis.innerHTML = "Las contraseñas deben ser iguales";
-            btn.setAttribute('hidden','');
-            btn.className += 'btnerr';
-        }else{
-            dis.innerHTML = " ";
-            btn.removeAttribute('hidden');
-            btn.className = 'ok';
-        }
-    }
-</script>
+  })();
+ </script>

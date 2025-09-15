@@ -38,24 +38,24 @@ if ($q_mostrar) {
                 $precio  = "$".$precio;
             }
 
-            $curDescripcion = '';
-            $curDescripcionArr = $r_mostrar["cur_descri"];
-            $curDescripcionArr = explode(" ",$curDescripcionArr,15);
-
-             for ($i=0; $i < 14; $i++) { 
-                $curDescripcion .= " " . $curDescripcionArr[$i];
-             }
-
-            
-             $curDescripcion .= "...";
+            // Build short description safely (first 14 words)
+            $curDescripcionRaw = trim((string)$r_mostrar["cur_descri"]);
+            if ($curDescripcionRaw === '') {
+                $curDescripcion = '';
+            } else {
+                $words = preg_split('/\s+/', $curDescripcionRaw);
+                $take = array_slice($words, 0, 14);
+                $curDescripcion = implode(' ', $take);
+                if (count($words) > 14) {
+                    $curDescripcion .= '...';
+                }
+            }
 
 
 
 
             $img = str_replace(" ", "_", $codigo . "." . $r_mostrar["cur_img"]);
-            if (isset($_SESSION['user'])) {
-                $user = $_SESSION['user'];
-            }
+            $user = isset($_SESSION['user']) ? $_SESSION['user'] : '';
 
             //Numero de matriculas del curso
             $sql_nMatriculas = "SELECT COUNT(cur_codigo) as 'matriculas' FROM matricula where cur_codigo = '$codigo'";
